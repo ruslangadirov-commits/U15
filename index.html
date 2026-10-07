@@ -151,6 +151,9 @@ h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; f
   box-shadow: 0 2px 6px rgba(10, 16, 30, .45);
   cursor: pointer;
 }
+.pin-ico svg { width: 1.15rem; height: 1.15rem; }
+.plate-ico { display: grid; place-items: center; min-height: 3.4rem; }
+.plate-ico svg { width: 1.9rem; height: 1.9rem; }
 .pin::after { content: ""; position: absolute; inset: -8px; }
 .pin[aria-pressed="true"] { background: var(--signal); color: var(--on-signal); border-color: var(--band); width: 2.5rem; height: 2.5rem; font-size: 1.35rem; z-index: 2; }
 .mapfoot { display: grid; gap: 12px; padding: 12px; border-top: 1px solid var(--line); }
@@ -199,6 +202,7 @@ h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; f
 .contacts dt { font-weight: 600; font-size: 1.05rem; }
 .contacts dt small { display: block; font-weight: 400; font-size: .95rem; color: var(--muted); }
 .contacts dd { margin: 0; }
+.contacts .addr { font-weight: 600; font-size: 1.05rem; user-select: all; -webkit-user-select: all; }
 dl { margin: 0; }
 
 footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
@@ -220,6 +224,7 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
   <symbol id="i-study" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5zM12 6.5v13"/></symbol>
   <symbol id="i-laundry" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="13.5" r="4"/><path d="M8 6.5h2"/></symbol>
   <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5.5M17.5 14.6A6 6 0 0 1 21 20"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="13" rx="2"/><path d="M5 11h14M8 17v2.5M16 17v2.5M8.5 14h.01M15.5 14h.01"/></symbol>
   <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/></symbol>
   <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></symbol>
 </svg>
@@ -252,7 +257,7 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
 
   <section id="map">
     <h2 data-i18n="mapTitle">Village map</h2>
-    <p class="hint" data-i18n="mapHint">Tap a number to see what is in that building.</p>
+    <p class="hint" data-i18n="mapHint">Tap a marker to see what is there.</p>
     <div class="legend">
       <span><b>VSA</b><span data-i18n="vsa">Vehicle entrance</span></span>
       <span><b>PSA</b><span data-i18n="psa">Pedestrian entrances</span></span>
@@ -265,13 +270,14 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
           <button type="button" class="pin" id="pin-11" data-b="11" aria-pressed="false" style="left:70%;top:25.6%">11</button>
           <button type="button" class="pin" id="pin-3" data-b="3" aria-pressed="false" style="left:40%;top:72.4%">3</button>
           <button type="button" class="pin" id="pin-5" data-b="5" aria-pressed="false" style="left:84.6%;top:56.8%">5</button>
+          <button type="button" class="pin pin-ico" id="pin-T" data-b="T" aria-pressed="false" style="left:87.4%;top:38.5%"><svg class="ico" aria-hidden="true"><use href="#i-bus"/></svg></button>
           <button type="button" class="pin" id="pin-4" data-b="4" aria-pressed="false" style="left:17.7%;top:78.7%">4</button>
         </div>
       </div>
       <div class="mapfoot">
         <div class="sel" id="sel" aria-live="polite">
           <div class="plate" id="sel-plate" hidden><small data-i18n="building">Building</small><span id="sel-num"></span></div>
-          <div class="sel-text"><strong id="sel-name" data-i18n="selEmpty">No building selected</strong><span id="sel-detail" data-i18n="selEmptyHint">The five numbered buildings have services for teams.</span></div>
+          <div class="sel-text"><strong id="sel-name" data-i18n="selEmpty">Nothing selected</strong><span id="sel-detail" data-i18n="selEmptyHint">The numbered buildings have services for teams.</span></div>
         </div>
         <div class="maprow">
           <button type="button" class="btn" id="zoom" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-zoom"/></svg><span id="zoom-label" data-i18n="zoomIn">Enlarge map</span></button>
@@ -282,7 +288,7 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
 
   <section id="places">
     <h2 data-i18n="placesTitle">What is where</h2>
-    <p class="note"><svg class="ico" aria-hidden="true"><use href="#i-team"/></svg><span data-i18n="teamNote">Team service desks are in every building block, open 07:00–23:00.</span></p>
+    <p class="note"><svg class="ico" aria-hidden="true"><use href="#i-team"/></svg><span data-i18n="teamNote">Team services desks are located in every building block, open 07:00–23:00.</span></p>
     <ul class="dir">
       <li data-b="13">
         <div class="plate"><small data-i18n="building">Building</small><span>13</span></div>
@@ -324,12 +330,20 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
           <button type="button" class="link" data-show="4"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button>
         </div>
       </li>
+      <li data-b="T">
+        <div class="plate plate-ico"><svg class="ico" aria-hidden="true"><use href="#i-bus"/></svg></div>
+        <div class="what">
+          <div class="svc"><div><strong data-i18n="transport">Transport pick-up/drop-off location</strong><em data-i18n="transportWhere">Between Buildings 10 and 5</em></div></div>
+          <button type="button" class="link" data-show="T"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button>
+        </div>
+      </li>
     </ul>
   </section>
 
   <section id="contacts">
     <h2 data-i18n="contactsTitle">Contacts</h2>
     <dl class="contacts">
+      <div><dt><span data-i18n="address">Address</span><small lang="az">Heydər Əliyev prospekti, 117, Bakı</small></dt><dd class="addr" data-i18n="addressValue">117 Heydar Aliyev Avenue, Baku</dd></div>
       <div><dt><span data-i18n="reception">Reception</span><small><span data-i18n="building">Building</span> 5 · <span data-i18n="open24">Open 24 hours</span></small></dt><dd><button type="button" class="link" data-show="5"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button></dd></div>
       <div><dt><span data-i18n="medical">Medical room</span><small><span data-i18n="building">Building</span> 13 · <span data-i18n="open24">Open 24 hours</span></small></dt><dd><button type="button" class="link" data-show="13"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button></dd></div>
     </dl>
@@ -345,9 +359,9 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Village Guide",
       lead: "Find the dining area, medical room, accreditation, reception, grocery store and other services in the village.",
       navMap: "Map", navPlaces: "Places", navContacts: "Contacts",
-      mapTitle: "Village map", mapHint: "Tap a number to see what is in that building.",
+      mapTitle: "Village map", mapHint: "Tap a marker to see what is there.",
       mapAlt: "Plan of the village with its buildings and the entrances, VSA and PSA",
-      selEmpty: "No building selected", selEmptyHint: "The five numbered buildings have services for teams.",
+      selEmpty: "Nothing selected", selEmptyHint: "The numbered buildings have services for teams.",
       vsa: "Vehicle entrance", psa: "Pedestrian entrances",
       zoomIn: "Enlarge map", zoomOut: "Fit map to screen",
       placesTitle: "What is where", building: "Building",
@@ -356,7 +370,8 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       accreditation: "Accreditation Center", reception: "Reception", shop: "Grocery store", outside: "Outside the village perimeter",
       prayer: "Prayer Rooms", learnOne: "Learning corner", learnMany: "Learning corners", laundry: "Laundry pick-up and drop-off",
       open24: "Open 24 hours", showOnMap: "Show on map",
-      contactsTitle: "Contacts", teamNote: "Team service desks are in every building block, open 07:00–23:00.",
+      transport: "Transport pick-up/drop-off location", transportWhere: "Between Buildings 10 and 5", address: "Address", addressValue: "117 Heydar Aliyev Avenue, Baku",
+      contactsTitle: "Contacts", teamNote: "Team services desks are located in every building block, open 07:00–23:00.",
       footer: "Information for athletes and team staff staying in the village.",
       langGroup: "Language"
     },
@@ -364,9 +379,9 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Guía de la Villa",
       lead: "Encuentra el comedor, la sala médica, la acreditación, la recepción, la tienda de alimentación y otros servicios de la villa.",
       navMap: "Mapa", navPlaces: "Lugares", navContacts: "Contactos",
-      mapTitle: "Mapa de la villa", mapHint: "Toca un número para ver qué hay en ese edificio.",
+      mapTitle: "Mapa de la villa", mapHint: "Toca un marcador para ver qué hay allí.",
       mapAlt: "Plano de la villa con sus edificios y las entradas, VSA y PSA",
-      selEmpty: "Ningún edificio seleccionado", selEmptyHint: "Los cinco edificios numerados tienen servicios para los equipos.",
+      selEmpty: "Nada seleccionado", selEmptyHint: "Los edificios numerados tienen servicios para los equipos.",
       vsa: "Entrada de vehículos", psa: "Entradas peatonales",
       zoomIn: "Ampliar mapa", zoomOut: "Ajustar a la pantalla",
       placesTitle: "Qué hay en cada edificio", building: "Edificio",
@@ -375,7 +390,8 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       accreditation: "Centro de Acreditación", reception: "Recepción", shop: "Tienda de alimentación", outside: "Fuera del perímetro de la villa",
       prayer: "Salas de oración", learnOne: "Rincón de aprendizaje", learnMany: "Rincones de aprendizaje", laundry: "Entrega y recogida de lavandería",
       open24: "Abierto las 24 horas", showOnMap: "Ver en el mapa",
-      contactsTitle: "Contactos", teamNote: "Hay mostradores de servicio a los equipos en todos los edificios, abiertos de 07:00 a 23:00.",
+      transport: "Punto de recogida y bajada del transporte", transportWhere: "Entre los edificios 10 y 5", address: "Dirección", addressValue: "Avenida Heydar Aliyev, 117, Bakú",
+      contactsTitle: "Contactos", teamNote: "Los mostradores de servicios a los equipos se encuentran en todos los edificios, abiertos de 07:00 a 23:00.",
       footer: "Información para deportistas y personal de los equipos alojados en la villa.",
       langGroup: "Idioma"
     },
@@ -383,9 +399,9 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Guide du Village",
       lead: "Trouvez le restaurant des équipes, la salle médicale, l’accréditation, la réception, l’épicerie et les autres services du village.",
       navMap: "Plan", navPlaces: "Lieux", navContacts: "Contacts",
-      mapTitle: "Plan du village", mapHint: "Touchez un numéro pour voir ce qui se trouve dans ce bâtiment.",
+      mapTitle: "Plan du village", mapHint: "Touchez un repère pour voir ce qui s’y trouve.",
       mapAlt: "Plan du village avec ses bâtiments et les entrées, VSA et PSA",
-      selEmpty: "Aucun bâtiment sélectionné", selEmptyHint: "Les cinq bâtiments numérotés proposent des services aux équipes.",
+      selEmpty: "Aucune sélection", selEmptyHint: "Les bâtiments numérotés proposent des services aux équipes.",
       vsa: "Entrée des véhicules", psa: "Entrées des piétons",
       zoomIn: "Agrandir le plan", zoomOut: "Ajuster à l’écran",
       placesTitle: "Où trouver quoi", building: "Bâtiment",
@@ -394,7 +410,8 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       accreditation: "Centre d’accréditation", reception: "Réception", shop: "Épicerie", outside: "En dehors du périmètre du village",
       prayer: "Salles de prière", learnOne: "Coin d’apprentissage", learnMany: "Coins d’apprentissage", laundry: "Dépôt et retrait du linge",
       open24: "Ouvert 24 h/24", showOnMap: "Voir sur le plan",
-      contactsTitle: "Contacts", teamNote: "Des comptoirs de service aux équipes se trouvent dans tous les bâtiments, ouverts de 07:00 à 23:00.",
+      transport: "Point de prise en charge et de dépose des transports", transportWhere: "Entre les bâtiments 10 et 5", address: "Adresse", addressValue: "117, avenue Heydar Aliyev, Bakou",
+      contactsTitle: "Contacts", teamNote: "Les comptoirs des services aux équipes se trouvent dans tous les bâtiments, ouverts de 07:00 à 23:00.",
       footer: "Informations pour les sportifs et l’encadrement des équipes logés au village.",
       langGroup: "Langue"
     }
@@ -419,10 +436,10 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
   function renderSelection() {
     var t = T[lang];
     var has = selected !== null;
-    $("sel-plate").hidden = !has;
+    $("sel-plate").hidden = !has || !/^\d+$/.test(selected);
     all(".pin").forEach(function (p) {
       p.setAttribute("aria-pressed", String(p.dataset.b === selected));
-      p.setAttribute("aria-label", t.building + " " + p.dataset.b);
+      p.setAttribute("aria-label", /^\d+$/.test(p.dataset.b) ? t.building + " " + p.dataset.b : t.transport);
     });
     all(".dir > li").forEach(function (li) { li.classList.toggle("on", li.dataset.b === selected); });
     if (!has) {
