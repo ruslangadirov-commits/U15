@@ -263,11 +263,11 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
   </nav>
 
   <section id="map">
-    <h2 data-i18n="mapTitle">Village map</h2>
+    <h2 data-i18n="mapTitle">Athletes Village map</h2>
     <p class="hint" data-i18n="mapHint">Tap a marker to see what is there.</p>
     <div class="legend">
-      <span class="lg"><span class="lg-pin"><svg class="ico" aria-hidden="true"><use href="#i-entry"/></svg></span><span data-i18n="entry">Entry and exit</span></span>
-      <span class="lg"><span class="lg-pin"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></span><span data-i18n="vehicle">Vehicle entry and exit</span></span>
+      <span class="lg"><span class="lg-pin"><svg class="ico" aria-hidden="true"><use href="#i-entry"/></svg></span><span data-i18n="entry">Entry and exit for pedestrians</span></span>
+      <span class="lg"><span class="lg-pin"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></span><span data-i18n="vehicle">Entry and exit for authorized vehicles</span></span>
       <span class="lg"><span class="lg-pin"><svg class="ico" aria-hidden="true"><use href="#i-bus"/></svg></span><span data-i18n="transport">Transport pick-up/drop-off location</span></span>
     </div>
     <div class="mapbox" id="mapbox">
@@ -323,7 +323,7 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
         <div class="plate"><small data-i18n="building">Building</small><span>3</span></div>
         <div class="what">
           <div class="svc"><svg class="ico" aria-hidden="true"><use href="#i-badge"/></svg><div><strong data-i18n="accreditation">Accreditation Center</strong><span class="hrs">08:00–21:00</span></div></div>
-          <div class="svc"><svg class="ico" aria-hidden="true"><use href="#i-study"/></svg><div><strong><span data-i18n="learnMany">Learning corners</span> A, B</strong><span class="hrs">08:00–21:00</span></div></div>
+          <div class="svc"><svg class="ico" aria-hidden="true"><use href="#i-study"/></svg><div><strong><span data-i18n="learnMany">Study spaces and Learning corners</span> A, B</strong><span class="hrs">08:00–21:00</span></div></div>
           <button type="button" class="link" data-show="3"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button>
         </div>
       </li>
@@ -351,14 +351,14 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       <li data-b="E">
         <div class="plate plate-ico"><svg class="ico" aria-hidden="true"><use href="#i-entry"/></svg></div>
         <div class="what">
-          <div class="svc"><div><strong data-i18n="entry">Entry and exit</strong><em data-i18n="entryWhere">Two points, marked on the map</em></div></div>
+          <div class="svc"><div><strong data-i18n="entry">Entry and exit for pedestrians</strong></div></div>
           <button type="button" class="link" data-show="E"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button>
         </div>
       </li>
       <li data-b="V">
         <div class="plate plate-ico"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></div>
         <div class="what">
-          <div class="svc"><div><strong data-i18n="vehicle">Vehicle entry and exit</strong><em data-i18n="vehicleWhere">Vehicles only, between Buildings 12 and 11</em></div></div>
+          <div class="svc"><div><strong data-i18n="vehicle">Entry and exit for authorized vehicles</strong></div></div>
           <button type="button" class="link" data-show="V"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="showOnMap">Show on map</span></button>
         </div>
       </li>
@@ -384,16 +384,16 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Athletes Village Guide",
       lead: "Find the dining area, medical room, accreditation, reception, grocery store and other services in the village.",
       navMap: "Map", navPlaces: "Places", navContacts: "Contacts",
-      mapTitle: "Village map", mapHint: "Tap a marker to see what is there.",
+      mapTitle: "Athletes Village map", mapHint: "Tap a marker to see what is there.",
       mapAlt: "Plan of the village with its buildings, entry and exit points",
       selEmpty: "Nothing selected", selEmptyHint: "The numbered buildings have services for teams.",
-      entry: "Entry and exit", entryWhere: "Two points, marked on the map", vehicle: "Vehicle entry and exit", vehicleWhere: "Vehicles only, between Buildings 12 and 11",
+      entry: "Entry and exit for pedestrians", vehicle: "Entry and exit for authorized vehicles",
       zoomIn: "Enlarge map", zoomOut: "Fit map to screen",
       placesTitle: "What is where", building: "Building",
       dining: "Athletes Dining Area", ground: "Ground floor",
       medical: "Medical room", recreation: "Recreation zone",
       accreditation: "Accreditation Center", reception: "Reception / HelpDesk", shop: "Grocery store", outside: "Outside the village perimeter",
-      prayer: "Prayer Rooms", learnOne: "Learning corner", learnMany: "Learning corners", laundry: "Laundry pick-up and drop-off", dropOff: "Drop-off", pickUp: "Pick-up",
+      prayer: "Prayer Rooms", learnOne: "Learning corner", learnMany: "Study spaces and Learning corners", laundry: "Laundry pick-up and drop-off", dropOff: "Drop-off", pickUp: "Pick-up",
       open24: "Open 24 hours", showOnMap: "Show on map",
       transport: "Transport pick-up/drop-off location", transportWhere: "Between Buildings 10 and 5", address: "Address", addressValue: "117 Heydar Aliyev Avenue, Baku",
       contactsTitle: "Contacts", teamNote: "Team services desks are located in every building block, ground level, open 07:00–23:00",
@@ -404,16 +404,16 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Guía de la Villa de Atletas",
       lead: "Encuentra el comedor, la sala médica, la acreditación, la recepción, la tienda de alimentación y otros servicios de la villa.",
       navMap: "Mapa", navPlaces: "Lugares", navContacts: "Contactos",
-      mapTitle: "Mapa de la villa", mapHint: "Toca un marcador para ver qué hay allí.",
+      mapTitle: "Mapa de la Villa de Atletas", mapHint: "Toca un marcador para ver qué hay allí.",
       mapAlt: "Plano de la villa con sus edificios y puntos de entrada y salida",
       selEmpty: "Nada seleccionado", selEmptyHint: "Los edificios numerados tienen servicios para los equipos.",
-      entry: "Entrada y salida", entryWhere: "Dos puntos, marcados en el mapa", vehicle: "Entrada y salida de vehículos", vehicleWhere: "Solo vehículos, entre los edificios 12 y 11",
+      entry: "Entrada y salida para peatones", vehicle: "Entrada y salida para vehículos autorizados",
       zoomIn: "Ampliar mapa", zoomOut: "Ajustar a la pantalla",
       placesTitle: "Qué hay en cada edificio", building: "Edificio",
       dining: "Comedor de deportistas", ground: "Planta baja",
       medical: "Sala médica", recreation: "Zona recreativa",
       accreditation: "Centro de Acreditación", reception: "Recepción / HelpDesk", shop: "Tienda de alimentación", outside: "Fuera del perímetro de la villa",
-      prayer: "Salas de oración", learnOne: "Rincón de aprendizaje", learnMany: "Rincones de aprendizaje", laundry: "Entrega y recogida de lavandería", dropOff: "Entrega", pickUp: "Recogida",
+      prayer: "Salas de oración", learnOne: "Rincón de aprendizaje", learnMany: "Espacios de estudio y rincones de aprendizaje", laundry: "Entrega y recogida de lavandería", dropOff: "Entrega", pickUp: "Recogida",
       open24: "Abierto las 24 horas", showOnMap: "Ver en el mapa",
       transport: "Punto de recogida y bajada del transporte", transportWhere: "Entre los edificios 10 y 5", address: "Dirección", addressValue: "Avenida Heydar Aliyev, 117, Bakú",
       contactsTitle: "Contactos", teamNote: "Los mostradores de servicios a los equipos se encuentran en todos los edificios, en la planta baja, abiertos de 07:00 a 23:00",
@@ -424,16 +424,16 @@ footer.wrap { padding-block: 0 32px; color: var(--muted); font-size: .95rem; }
       title: "Guide du Village des Athlètes",
       lead: "Trouvez le restaurant des équipes, la salle médicale, l’accréditation, la réception, l’épicerie et les autres services du village.",
       navMap: "Plan", navPlaces: "Lieux", navContacts: "Contacts",
-      mapTitle: "Plan du village", mapHint: "Touchez un repère pour voir ce qui s’y trouve.",
+      mapTitle: "Plan du Village des Athlètes", mapHint: "Touchez un repère pour voir ce qui s’y trouve.",
       mapAlt: "Plan du village avec ses bâtiments et points d’entrée et de sortie",
       selEmpty: "Aucune sélection", selEmptyHint: "Les bâtiments numérotés proposent des services aux équipes.",
-      entry: "Entrée et sortie", entryWhere: "Deux points, indiqués sur le plan", vehicle: "Entrée et sortie des véhicules", vehicleWhere: "Véhicules uniquement, entre les bâtiments 12 et 11",
+      entry: "Entrée et sortie pour les piétons", vehicle: "Entrée et sortie pour les véhicules autorisés",
       zoomIn: "Agrandir le plan", zoomOut: "Ajuster à l’écran",
       placesTitle: "Où trouver quoi", building: "Bâtiment",
       dining: "Restaurant des sportifs", ground: "Rez-de-chaussée",
       medical: "Salle médicale", recreation: "Espace détente",
       accreditation: "Centre d’accréditation", reception: "Réception / HelpDesk", shop: "Épicerie", outside: "En dehors du périmètre du village",
-      prayer: "Salles de prière", learnOne: "Coin d’apprentissage", learnMany: "Coins d’apprentissage", laundry: "Dépôt et retrait du linge", dropOff: "Dépôt", pickUp: "Retrait",
+      prayer: "Salles de prière", learnOne: "Coin d’apprentissage", learnMany: "Espaces d’étude et coins d’apprentissage", laundry: "Dépôt et retrait du linge", dropOff: "Dépôt", pickUp: "Retrait",
       open24: "Ouvert 24 h/24", showOnMap: "Voir sur le plan",
       transport: "Point de prise en charge et de dépose des transports", transportWhere: "Entre les bâtiments 10 et 5", address: "Adresse", addressValue: "117, avenue Heydar Aliyev, Bakou",
       contactsTitle: "Contacts", teamNote: "Les comptoirs des services aux équipes se trouvent au rez-de-chaussée de chaque bâtiment, ouverts de 07:00 à 23:00",
